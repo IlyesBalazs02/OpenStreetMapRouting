@@ -1,4 +1,8 @@
 package org.example;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,6 +25,8 @@ public class OsmHttpRequest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        Gson gson = new Gson();
     }
 
     private static String sendHttpRequest(String urlString) throws IOException {
