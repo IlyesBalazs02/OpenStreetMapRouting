@@ -30,7 +30,7 @@ public class Graph {
         Init(tmp);
     }
 
-    
+
     private void Init(List<Way> ways){
         /*
         System.out.println("GRAPH:");
@@ -85,5 +85,16 @@ public class Graph {
         }
         return false;
     }
+
+    private GraphNode SearchById(long id)
+    {
+        for (GraphNode node : nodes)
+        {
+            if(node.getId() == id)return node;
+        }
+        return null;
+    }
+
+    
 }
 
