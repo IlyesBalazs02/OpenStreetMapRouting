@@ -95,6 +95,29 @@ public class Graph {
         return null;
     }
 
-    
+    public static final double RADIUS_OF_EARTH = 6371; // Earth's radius in kilometers
+
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        // Convert latitude and longitude from degrees to radians
+        double lat1Radians = Math.toRadians(lat1);
+        double lon1Radians = Math.toRadians(lon1);
+        double lat2Radians = Math.toRadians(lat2);
+        double lon2Radians = Math.toRadians(lon2);
+
+        // Calculate differences between latitudes and longitudes
+        double latDiff = lat2Radians - lat1Radians;
+        double lonDiff = lon2Radians - lon1Radians;
+
+        // Haversine formula
+        double a = Math.pow(Math.sin(latDiff / 2), 2)
+                + Math.cos(lat1Radians) * Math.cos(lat2Radians)
+                * Math.pow(Math.sin(lonDiff / 2), 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        // Calculate distance
+        double distanceInMeters = RADIUS_OF_EARTH * c * 1000; // Convert km to meters
+        return distanceInMeters;
+    }
+
 }
 
